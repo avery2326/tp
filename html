@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Auto Clicker</h1>
+    <button id="clickMe">Click Me!</button>
+    <button id="start">Start Auto Clicker</button>
+    <button id="stop" disabled>Stop Auto Clicker</button>
+
+    <script>
+        let autoClicker;
+        const clickButton = document.getElementById('clickMe');
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+
+        startButton.addEventListener('click', () => {
+            autoClicker = setInterval(() => {
+                clickButton.click();
+            }, 1000); // Adjust interval time (in milliseconds) as needed
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        });
+
+        stopButton.addEventListener('click', () => {
+            clearInterval(autoClicker);
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        });
+
+        clickButton.addEventListener('click', () => {
+            alert('Button clicked!');
+        });
+    </script>
+</body>
+</html>
